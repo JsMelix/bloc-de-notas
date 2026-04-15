@@ -1,0 +1,10 @@
+nohup: ignoring input
+
+> metaverse-notes@0.0.0 dev
+> vite --host 0.0.0.0
+
+
+  VITE v5.4.21  ready in 767 ms
+
+  ➜  Local:   http://localhost:5173/
+  ➜  Network: http://21.0.8.156:5173/
