@@ -1,0 +1,54 @@
+```
+# Dependencies
+node_modules/
+
+# Build artifacts
+dist/
+build/
+coverage/
+htmlcov/
+
+# Environment
+.env
+.env.local
+.env.*
+
+# Editors
+.vscode/
+.idea/
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+*.so
+.coverage
+
+# Logs
+*.log
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Temp files
+*.tmp
+*.swp
+*.swo
+
+# Testing
+.mypy_cache/
+.pytest_cache/
+.nyc_output/
+coverage.xml
+
+# Node.js
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Vite-specific
+!.gitignore
+```
