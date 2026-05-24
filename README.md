@@ -8,3 +8,5 @@ Features que se sumaran  a la app
 añadiendo cambios importantes 
 
 Creando Agente interactivo 
+
+interfaz interactiva y UX mejorado
