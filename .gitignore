@@ -1,50 +1,49 @@
 ```
-# Build artifacts
-dist/
-build/
-*.js
-*.css
-
-# Dependencies
-node_modules/
+# Logs and temp files
+*.log
 
 # Environment
 .env
 .env.local
-*.env.*
+.env.*
 
 # Editors
 .vscode/
 .idea/
 
-# Logs and temp files
-*.log
-*.tmp
-*.swp
-
-# Python
+# Dependencies
+node_modules/
+venv/
+.venv/
 __pycache__/
-*.pyc
-*.pyo
-*.pyd
-
-# Java
-*.class
-*.jar
-*.war
-*.ear
+.mypy_cache/
+.pytest_cache/
+dist/
+build/
 target/
 .gradle/
 
-# C/C++
+# Compiled and binary files
+*.pyc
+*.class
 *.o
-*.obj
+*.exe
+*.dll
 *.so
 *.a
-*.dll
-*.exe
+*.obj
+*.out
 
-# Compression
+# System files
+.DS_Store
+Thumbs.db
+
+# Coverage
+coverage/
+htmlcov/
+.coverage
+
+# Compressed files
 *.zip
 *.gz
 *.tar
