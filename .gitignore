@@ -1,5 +1,50 @@
 ```
-# Compressed files
+# Build artifacts
+dist/
+build/
+*.js
+*.css
+
+# Dependencies
+node_modules/
+
+# Environment
+.env
+.env.local
+*.env.*
+
+# Editors
+.vscode/
+.idea/
+
+# Logs and temp files
+*.log
+*.tmp
+*.swp
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Java
+*.class
+*.jar
+*.war
+*.ear
+target/
+.gradle/
+
+# C/C++
+*.o
+*.obj
+*.so
+*.a
+*.dll
+*.exe
+
+# Compression
 *.zip
 *.gz
 *.tar

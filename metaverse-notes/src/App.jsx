@@ -1,18 +1,20 @@
 import { useState, useEffect } from 'react'
+import Auth from './Auth'
 import './App.css'
 
 function App() {
+  const [currentUser, setCurrentUser] = useState(null)
   const [notes, setNotes] = useState([])
   const [isModalOpen, setIsModalOpen] = useState(false)
   const [editingNote, setEditingNote] = useState(null)
   const [formData, setFormData] = useState({ title: '', content: '' })
   const [particles, setParticles] = useState([])
-
-  // Cargar notas desde localStorage al iniciar
+  
+  // Verificar si hay un usuario logueado al iniciar
   useEffect(() => {
-    const savedNotes = localStorage.getItem('metaverse-notes')
-    if (savedNotes) {
-      setNotes(JSON.parse(savedNotes))
+    const savedUser = localStorage.getItem('metaverse-current-user')
+    if (savedUser) {
+      setCurrentUser(JSON.parse(savedUser))
     }
     
     // Generar partículas para el fondo
@@ -25,10 +27,40 @@ function App() {
     setParticles(newParticles)
   }, [])
 
+  // Cargar notas del usuario actual desde localStorage
+  useEffect(() => {
+    if (currentUser) {
+      const savedNotes = localStorage.getItem(`metaverse-notes-${currentUser.id}`)
+      if (savedNotes) {
+        setNotes(JSON.parse(savedNotes))
+      } else {
+        setNotes([])
+      }
+    }
+  }, [currentUser])
+
   // Guardar notas en localStorage cuando cambian
   useEffect(() => {
-    localStorage.setItem('metaverse-notes', JSON.stringify(notes))
-  }, [notes])
+    if (currentUser) {
+      localStorage.setItem(`metaverse-notes-${currentUser.id}`, JSON.stringify(notes))
+    }
+  }, [notes, currentUser])
+
+  const handleLogin = (user) => {
+    setCurrentUser(user)
+    localStorage.setItem('metaverse-current-user', JSON.stringify(user))
+  }
+
+  const handleRegister = (user) => {
+    setCurrentUser(user)
+    localStorage.setItem('metaverse-current-user', JSON.stringify(user))
+  }
+
+  const handleLogout = () => {
+    setCurrentUser(null)
+    localStorage.removeItem('metaverse-current-user')
+    setNotes([])
+  }
 
   const openModal = (note = null) => {
     if (note) {
@@ -97,6 +129,11 @@ function App() {
     })
   }
 
+  // Si no hay usuario logueado, mostrar pantalla de autenticación
+  if (!currentUser) {
+    return <Auth onLogin={handleLogin} onRegister={handleRegister} />
+  }
+
   return (
     <>
       {/* Fondo animado */}
@@ -122,6 +159,12 @@ function App() {
         <header className="header">
           <h1 className="title">METAVESE NOTES</h1>
           <p className="subtitle">Tu espacio de almacenamiento en el metaverso</p>
+          <div className="user-info">
+            <span className="username">👤 {currentUser.username}</span>
+            <button className="btn btn-danger btn-logout" onClick={handleLogout}>
+              Cerrar sesión
+            </button>
+          </div>
         </header>
 
         {/* Panel de notas */}
